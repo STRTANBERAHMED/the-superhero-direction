@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import Cart from '../Cart/Cart';
 import Writers from '../Writers/Writers';
 
 const Shop = () => {
 
+    // destructuring
     const [writers, setWriters] = useState([])
+
+    const [cart, setCart] = useState([])
+
+    // eventhandler
+    const handleAddWriter = (writer) => {
+
+        const newCart = [...cart, writer]
+
+        setCart(newCart)
+
+    }
+
 
     useEffect(() => {
         fetch("writers.json")
@@ -20,6 +34,7 @@ const Shop = () => {
                             writers.map(writer => <Writers
                                 key={writer._id}
                                 writer={writer}
+                                handleAddWriter={handleAddWriter}
                             >
                             </Writers>)
                         }
@@ -27,9 +42,12 @@ const Shop = () => {
 
                     </div>
                 </div>
-            </div>
-            <div className="col-md-3">
-
+                <div className="col-md-3">
+                    <Cart
+                        cart={cart}
+                    >
+                    </Cart>
+                </div>
             </div>
         </div>
     );

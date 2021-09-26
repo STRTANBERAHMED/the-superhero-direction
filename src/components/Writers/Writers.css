@@ -1,0 +1,13 @@
+.writer{
+    height: 400px;
+    background-color: rgb(149, 212, 252);
+}
+
+.writer img{
+    width: 50%;
+    padding-top: 10px;
+    border-radius: 5px;
+}
+.btn{
+    background-color: rgb(250, 248, 227);
+}
